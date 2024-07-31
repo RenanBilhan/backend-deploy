@@ -1,12 +1,14 @@
 package com.renanb.backend.controller;
 
+import com.renanb.backend.dto.TripInputDto;
+import com.renanb.backend.dto.TripOutputDto;
 import com.renanb.backend.model.Trip;
 import com.renanb.backend.repository.TripRepository;
+import com.renanb.backend.service.TripService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,10 +17,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TripController {
 
-    private final TripRepository tripRepository;
+    private final TripService tripService;
 
     @GetMapping
     public ResponseEntity<List<Trip>> findAll(){
-        return ResponseEntity.ok(tripRepository.findAll());
+        return ResponseEntity.ok(tripService.findAll());
+    }
+
+    @PostMapping
+    public ResponseEntity<TripOutputDto> save(@RequestBody TripInputDto inputDto){
+        return new ResponseEntity<>(tripService.save(inputDto),HttpStatus.CREATED);
     }
 }
