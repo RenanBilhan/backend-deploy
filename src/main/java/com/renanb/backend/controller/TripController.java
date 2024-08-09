@@ -28,4 +28,9 @@ public class TripController {
     public ResponseEntity<TripOutputDto> save(@RequestBody TripInputDto inputDto){
         return new ResponseEntity<>(tripService.save(inputDto),HttpStatus.CREATED);
     }
+
+    @GetMapping("{tripId}")
+    public ResponseEntity<TripOutputDto> findById(@PathVariable Long tripId){
+        return new ResponseEntity<>(tripService.findById(tripId), HttpStatus.OK);
+    }
 }

@@ -30,4 +30,8 @@ public class TripService {
                 ),
                 TripOutputDto.class);
     }
+
+    public TripOutputDto findById(Long tripId) {
+        return ConversorMapper.convert(tripRepository.findById(tripId).get(), TripOutputDto.class);
+    }
 }

@@ -21,7 +21,7 @@ public class Trip {
     private String tripName;
     @NotBlank
     private String description;
-    private byte[] picture;
+    private String picture;
 
 
 }
