@@ -14,5 +14,6 @@ public class TripInputDto {
     private String tripName;
     @NotBlank
     private String description;
+    private String imageLink;
 
 }

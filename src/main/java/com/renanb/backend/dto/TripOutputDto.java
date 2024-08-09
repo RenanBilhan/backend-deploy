@@ -12,5 +12,5 @@ public class TripOutputDto {
     private Long tripId;
     private String tripName;
     private String description;
-    private byte[] picture;
+    private String picture;
 }
